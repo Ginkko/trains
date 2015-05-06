@@ -10,26 +10,25 @@ Bundle to install the gems in the Gemfile. Database structure for this app requi
 
 Table Trains:
 
-id | name
-___|____________
-1  | Blue line
+id  | name
+------------- | -------------
+1  | Blue Line
 2  | Yellow Line
-3  | Green Line
+
 
 Table Cities:
 
-id | name
-___|__________
+id  | name
+------------- | -------------
 1  | Portland
-2  | Seattle
-3  | Jaynestown
+2  | Jaynestown
 
 Stops Table:
 
-id | train_id | city_id
-___|__________|__________
-1  | 1        | 2
-2  | 3        | 3
+id  | train_id | city_id
+--- | ------- | -------------
+1  | 1 | 2
+2  | 2 | 1
 
 
 Copyright: MIT License 2015
