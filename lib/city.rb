@@ -26,4 +26,9 @@ class City
     same_name = @name == other_city.name
   end
 
+  def self.find(id)
+    result = DB.exec("SELECT * FROM cities WHERE id = #{id};")
+    name = result.first.fetch('name')
+    City.new({:id => id.to_i, :name => name})
+  end
 end
