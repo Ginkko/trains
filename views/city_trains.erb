@@ -5,8 +5,8 @@
     <li><a href="/train_cities/<%= train.id %>"><%= train.name %></a></li>
   <% end %>
 </ul>
+<div class="col-md-4">
 <h4>Add a Train Line to <%= @city.name %>:</h4>
-
 <form action="/city_trains/<%= @city.id %>" method="post">
   <input type ="hidden" name="_method" value="patch">
   <div class="form-group">
@@ -19,3 +19,24 @@
 </div>
 <button class ="btn btn-info" name="submit">Add</button>
 </form>
+</div>
+<div class="col-md-4">
+<form action="/city_trains/<%= @city.id %>/updated" method="post">
+  <input type="hidden" name="_method" value="patch">
+  <div class "form-group">
+    <label for="new_name">Update City Name:</label>
+    <input type="text" name="new_name">
+  </div>
+  <button class="btn btn-info" name="update">Update</button>
+</form>
+</div>
+<div class="col-md-4">
+  <form action="/deleted" method="post">
+    <div class="form-group">
+      <input type="hidden" name="hidden_id" value="<%= @city.id %>">
+      <input type="hidden" name="_method" value="delete">
+      <label for="delete">Delete This City:</label>
+    </div>
+    <button class="btn btn-danger" name="delete">Delete</button>
+  </form>
+</div>

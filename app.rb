@@ -64,6 +64,18 @@ patch('/city_trains/:id') do
   erb(:city_trains)
 end
 
+patch('/city_trains/:id/updated') do
+  city_id = params.fetch("id").to_i
+  @city = City.find(city_id)
+  @trains = @city.trains
+  @all_trains = Train.all()
+  if params.fetch("new_name") != nil
+    @city = City.find(city_id)
+    @city.update(:name => params.fetch("new_name"))
+  end
+  erb(:city_trains)
+end
+
 get('/cities') do
   @cities = City.all
   erb(:cities)
@@ -78,4 +90,11 @@ end
 
 get('/cities/new') do
   erb(:city_form)
+end
+
+delete('/deleted') do
+  city_id = params.fetch("hidden_id").to_i
+  city = City.find(city_id)
+  city.delete
+  erb(:deleted)
 end

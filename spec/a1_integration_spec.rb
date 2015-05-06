@@ -25,3 +25,24 @@ describe('viewing and adding trains', {:type => :feature}) do
 
   end
 end
+
+describe('updating and deleting cities', {:type => :feature}) do
+  it('processes user name changes and changes the name accordingly') do
+    visit('/cities/new')
+    fill_in('name', :with => "Metropolis")
+    click_on('Save')
+    click_on("Metropolis")
+    fill_in("new_name", :with => "NYC")
+    click_on("Update")
+    expect(page).to have_content("NYC")
+  end
+  it('deletes a city from the database') do
+    visit('/cities/new')
+    fill_in('name', :with => "Metropolis")
+    click_on('Save')
+    expect(page).to have_content("Metropolis")
+    click_on('Metropolis')
+    click_on('Delete')
+    expect(page).to have_content("deleted")
+  end
+end
