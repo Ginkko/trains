@@ -54,6 +54,7 @@ patch('/trains/:id/updated') do
   if params.fetch("new_name") != nil
     @train.update(:name => params.fetch("new_name"))
   end
+  erb(:train_cities)
 end
 
 get('/cities') do
