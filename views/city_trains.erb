@@ -2,12 +2,12 @@
 
 <ul>
   <% @trains.each do |train| %>
-    <li><a href="/train_cities/<%= train.id %>"><%= train.name %></a></li>
+    <li><a href="/trains/<%= train.id %>"><%= train.name %></a></li>
   <% end %>
 </ul>
 <div class="col-md-4">
 <h4>Add a Train Line to <%= @city.name %>:</h4>
-<form action="/city_trains/<%= @city.id %>" method="post">
+<form action="/cities/<%= @city.id %>" method="post">
   <input type ="hidden" name="_method" value="patch">
   <div class="form-group">
     <label for="trains">Select Train:</label>
@@ -21,7 +21,7 @@
 </form>
 </div>
 <div class="col-md-4">
-<form action="/city_trains/<%= @city.id %>/updated" method="post">
+<form action="/cities/<%= @city.id %>/updated" method="post">
   <input type="hidden" name="_method" value="patch">
   <div class "form-group">
     <label for="new_name">Update City Name:</label>

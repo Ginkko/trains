@@ -2,12 +2,12 @@
 
 <ul>
   <% @cities.each do |city| %>
-    <li><a href="/city_trains/<%= city.id %>"><%= city.name %></a></li>
+    <li><a href="/cities/<%= city.id %>"><%= city.name %></a></li>
   <% end %>
 </ul>
 <h4>Add a Destination to <%= @train.name %>:</h4>
 
-<form action="/train_cities/<%= @train.id %>" method="post">
+<form action="/trains/<%= @train.id %>" method="post">
   <input type ="hidden" name="_method" value="patch">
   <div class="form-group">
     <label for="cities">Select City:</label>
