@@ -17,6 +17,12 @@ class Train
     trains
   end
 
+  def self.find(id)
+    result = DB.exec("SELECT * FROM trains WHERE id = #{id};")
+    name = result.first.fetch('name')
+    Train.new({:id => id.to_i, :name => name})
+  end
+
   def save
     results = DB.exec("INSERT INTO trains (name) VALUES ('#{@name}') RETURNING id;")
     @id = results.first.fetch('id').to_i
