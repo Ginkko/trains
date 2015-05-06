@@ -1,0 +1,6 @@
+<h1 class="page-header text-center">List of Trains</h1>
+<ul>
+  <% @trains.each do |train| %>
+    <li><a href="/train_cities/<%= train.id %>"><%= train.name %></a></li>
+  <% end %>
+</ul>

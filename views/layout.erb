@@ -1,0 +1,33 @@
+<!Doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles.css">
+    <title>Train-O-Rama</title>
+  </head>
+  <body>
+    <div id="wrap" class="container">
+      <%= yield %>
+    </div>
+  </body>
+  <footer>
+    <row>
+      <div id ="footer">
+      <div class="text-center">
+      <div class="col-md-3">
+        <a href="/trains">List of Trains</a>
+      </div>
+      <div class="col-md-3">
+        <a href="/cities">List of Cities</a>
+      </div>
+      <div class="col-md-3">
+        <a href="/trains/new">Add a Train</a>
+      </div>
+      <div class="col-md-3">
+        <a href="/cities/new">Add a City</a>
+      </div>
+      </div>
+      </div>
+    </row>
+  </footer>
+</html>
