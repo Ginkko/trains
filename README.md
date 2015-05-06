@@ -11,7 +11,7 @@ Bundle to install the gems in the Gemfile. Database structure for this app requi
 Table Trains:
 
 id | name
-________________
+___|____________
 1  | Blue line
 2  | Yellow Line
 3  | Green Line
@@ -19,7 +19,7 @@ ________________
 Table Cities:
 
 id | name
-______________
+___|__________
 1  | Portland
 2  | Seattle
 3  | Jaynestown
@@ -27,7 +27,7 @@ ______________
 Stops Table:
 
 id | train_id | city_id
-________________________
+___|__________|__________
 1  | 1        | 2
 2  | 3        | 3
 
