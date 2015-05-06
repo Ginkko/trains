@@ -1,0 +1,21 @@
+<h1 class="page-header text-center"><%= @city.name %>'s Trains </h1>
+
+<ul>
+  <% @trains.each do |train| %>
+    <li><a href="/train_cities/<%= train.id %>"><%= train.name %></a></li>
+  <% end %>
+</ul>
+<h4>Add a Train Line to <%= @city.name %>:</h4>
+
+<form action="/city_trains/<%= @city.id %>" method="post">
+  <input type ="hidden" name="_method" value="patch">
+  <div class="form-group">
+    <label for="trains">Select Train:</label>
+    <select id="trains" name="trains">
+    <% @all_trains.each do |train| %>
+      <option value="<%= train.id %>"> <%= train.name %></option>
+    <% end %>
+  </select>
+</div>
+<button class ="btn btn-info" name="submit">Add</button>
+</form>
