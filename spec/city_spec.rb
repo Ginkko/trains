@@ -17,6 +17,7 @@ describe(City) do
       expect(City.find(test_city.id)).to eq(test_city)
     end
   end
+
   describe('#update') do
     it("lets you update cities in the database") do
       test_city = City.new({:id => nil, :name => "Boston"})
@@ -25,4 +26,16 @@ describe(City) do
       expect(test_city.name()).to eq("Framingham")
     end
   end
+
+  describe('#delete') do
+    it('lets you delete a city from the database') do
+      test_city = City.new({:id => nil, :name => "Gotham"})
+      test_city.save
+      test_city2 = City.new({:id => nil, :name => "Metropolis"})
+      test_city2.save
+      test_city.delete()
+      expect(City.all).to eq([test_city2])
+    end
+  end
+
 end
