@@ -17,5 +17,12 @@ describe(City) do
       expect(City.find(test_city.id)).to eq(test_city)
     end
   end
-
+  describe('#update') do
+    it("lets you update cities in the database") do
+      test_city = City.new({:id => nil, :name => "Boston"})
+      test_city.save
+      test_city.update({:name => "Framingham"})
+      expect(test_city.name()).to eq("Framingham")
+    end
+  end
 end

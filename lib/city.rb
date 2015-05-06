@@ -31,4 +31,10 @@ class City
     name = result.first.fetch('name')
     City.new({:id => id.to_i, :name => name})
   end
+
+  def update(attributes)
+    @name = attributes.fetch(:name, @name)
+    @id = self.id
+    DB.exec("UPDATE cities Set name = '#{@name}' WHERE id = #{@id};")
+  end
 end
