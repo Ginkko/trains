@@ -33,7 +33,9 @@
 <div class="col-md-4">
   <form action="/deleted" method="post">
     <div class="form-group">
-      <input type="hidden" name="hidden_id" value="<%= @city.id %>">
+      <input type="hidden" name="hidden_id_city" value="<%= @city.id %>">
+      <input type="hidden" name="hidden_id_train" value="<%= nil %>">
+
       <input type="hidden" name="_method" value="delete">
       <label for="delete">Delete This City:</label>
     </div>
