@@ -32,4 +32,11 @@ class Train
     same_name = @name == other_train.name
   end
 
+  def update(attributes)
+    @name = attributes.fetch(:name, @name)
+    @id = self.id()
+    DB.exec("UPDATE trains SET name = '#{@name}' WHERE id = #{@id};")
+  end
+
+
 end
