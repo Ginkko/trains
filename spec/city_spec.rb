@@ -25,6 +25,27 @@ describe(City) do
       test_city.update({:name => "Framingham"})
       expect(test_city.name()).to eq("Framingham")
     end
+    it("leds you add a train to a city") do
+      train = Train.new({:id => nil, :name => "Amtrak"})
+      train.save
+      city = City.new({:id => nil, :name => "San Francisco"})
+      city.save()
+      city.update({:train_ids => [train.id]})
+      expect(city.trains).to eq([train])
+    end
+  end
+
+  describe('#trains') do
+    it("returns all of the trains that visit a certain city") do
+      train = Train.new({:id => nil, :name => "Thomas the Tank Engine"})
+      train.save
+      train2 = Train.new({:id => nil, :name => "Snowpiercer"})
+      train2.save
+      city = City.new({:id => nil, :name => "Coeur D Alene"})
+      city.save
+      city.update({:train_ids => [train.id, train2.id]})
+      expect(city.trains).to eq([train, train2])
+    end
   end
 
   describe('#delete') do
