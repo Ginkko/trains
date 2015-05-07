@@ -1,4 +1,4 @@
-<h1 class="page-header text-center"><%= @city.name %> Details</h1>
+<h1><%= @city.name %> Details</h1>
 
 <h4>List of trains:</h4>
 <ul>
@@ -7,39 +7,42 @@
   <% end %>
 </ul>
 <div class="col-md-4">
-<h4>Add a Train Line to <%= @city.name %>:</h4>
+<h5>Add a Train Line to <%= @city.name %>:</h5>
 <form action="/cities/<%= @city.id %>" method="post">
   <input type ="hidden" name="_method" value="patch">
   <div class="form-group">
-    <label for="trains">Select Train:</label>
+    <!-- <label for="trains">Select Train:</label> -->
     <select id="trains" name="trains">
     <% @all_trains.each do |train| %>
       <option value="<%= train.id %>"> <%= train.name %></option>
     <% end %>
   </select>
+  <button class ="btn btn-info" name="submit">Add</button>
 </div>
-<button class ="btn btn-info" name="submit">Add</button>
 </form>
 </div>
 <div class="col-md-4">
+  <h5>Update City Name:</h5>
 <form action="/cities/<%= @city.id %>/updated" method="post">
   <input type="hidden" name="_method" value="patch">
   <div class "form-group">
-    <label for="new_name">Update City Name:</label>
+    <!-- <label for="new_name">Update City Name:</label> -->
     <input type="text" name="new_name">
+    <button class="btn btn-info" name="update">Update</button>
   </div>
-  <button class="btn btn-info" name="update">Update</button>
 </form>
 </div>
 <div class="col-md-4">
+  <h5>Delete This City:</h5>
   <form action="/deleted" method="post">
     <div class="form-group">
       <input type="hidden" name="hidden_id_city" value="<%= @city.id %>">
       <input type="hidden" name="hidden_id_train" value="<%= nil %>">
 
       <input type="hidden" name="_method" value="delete">
-      <label for="delete">Delete This City:</label>
+      <!-- <label for="delete">Delete This City:</label> -->
+      <button class="btn btn-danger" name="delete">Delete</button>
+
     </div>
-    <button class="btn btn-danger" name="delete">Delete</button>
   </form>
 </div>
