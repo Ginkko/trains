@@ -11,7 +11,7 @@
     </div>
   </body>
   <footer>
-
+    <% if @@user.flag != nil %>
       <div id ="footer">
         <div class ="row">
         <div class="text-center">
@@ -28,18 +28,22 @@
       </div>
       <div class="row">
         <div class="text-center">
+          <% if @@user.flag == true %>
           <div class="col-md-4">
             <a href="/trains/new">Add a Train</a>
           </div>
           <div class="col-md-4">
             <a href="/cities/new">Add a City</a>
           </div>
+          <% else %>
+          <% end %>
           <div id="name">
             <a href="/">Home</a>
           </div>
         </div>
       </div>
   </div>
-
+  <% else %>
+  <% end %>
   </footer>
 </html>

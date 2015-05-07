@@ -3,10 +3,15 @@ require('./app')
 require "spec_helper"
 Capybara.app = Sinatra::Application
 set(:show_exceptions, false)
+before do
+  @@user = User.new
+  @@user.admin_flag
+end
 
 describe('viewing and adding trains', {:type => :feature}) do
 
   it('processes user input to add a city to a train', {:type => :feature}) do
+
     visit('/trains/new')
     fill_in('name', :with => "Blue Line")
     click_on('Save')

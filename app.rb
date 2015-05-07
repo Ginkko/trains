@@ -1,5 +1,6 @@
 require './lib/train'
 require './lib/city'
+require './lib/user'
 require 'sinatra'
 require 'sinatra/reloader'
 require 'pg'
@@ -9,11 +10,21 @@ also_reload 'lib/**/*.rb'
 DB = PG.connect({:dbname => 'trains'})
 
 get('/') do
+  @@user = User.new
   erb(:index)
+end
+
+post('/home') do
+  if params.fetch('user') == "admin"
+    @@user.admin_flag
+  else @@user.user_flag
+  end
+  erb(:home)
 end
 
 get('/ticket') do
   @all_cities = City.all
+  binding.pry
   erb(:ticket)
 end
 

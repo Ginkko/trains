@@ -1,6 +1,7 @@
 require "rspec"
 require "train"
 require "city"
+require "user"
 require "pg"
 require "pry"
 

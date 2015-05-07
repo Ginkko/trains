@@ -1,3 +1,12 @@
 <h1>Train-O-Rama</h1>
 <h4> Welcome to Trains </h4>
-<p>Select an option below:</p>
+<h5>Are you an administrator or a customer?</h5>
+<form action="/home" method="post">
+<div class="form-group">
+  <select id="user" name="user">
+    <option value="admin">Administrator</option>
+    <option value="cust">Customer<option>
+  </select>
+<button class ="btn btn-info" name="login">Log In</button>
+</div>
+</form>
