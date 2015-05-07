@@ -5,9 +5,9 @@
     <li><a href="/cities/<%= city.id %>"><%= city.name %></a> <%= time%></li>
   <% end %>
 </ul>
+<% if @@user.flag == true %>
 <div class="col-md-4">
 <h5>Add a Destination to <%= @train.name %>:</h5>
-
 <form action="/trains/<%= @train.id %>" method="post">
   <input type ="hidden" name="_method" value="patch">
   <div class="form-group">
@@ -61,4 +61,6 @@
       <button class ="btn btn-danger" name="submit">Delete</button>
     </div>
   </form>
+<% else %>
+<% end %>
 </div>

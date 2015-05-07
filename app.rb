@@ -24,7 +24,6 @@ end
 
 get('/ticket') do
   @all_cities = City.all
-  binding.pry
   erb(:ticket)
 end
 
