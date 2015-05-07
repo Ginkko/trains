@@ -130,12 +130,19 @@ patch('/cities/:id/updated') do
 end
 
 delete('/deleted') do
-  if params.fetch("train_to_delete") != nil && params.fetch("hidden_id_city") != nil
+  if params.fetch("train_to_delete") != "" && params.fetch("hidden_id_city") != ""
     train_id = params.fetch("train_to_delete").to_i
-    city_id = params.fetch("hidden_id_city")
+    city_id = params.fetch("hidden_id_city").to_i
     city = City.find(city_id)
     train2 = Train.find(train_id)
     train2.delete_stop(city)
+    erb(:deleted)
+  elsif params.fetch("city_to_delete") != "" && params.fetch("hidden_id_train") != ""
+    city_id = params.fetch("city_to_delete").to_i
+    train_id = params.fetch("hidden_id_train").to_i
+    train = Train.find(train_id)
+    city2 = City.find(city_id)
+    city2.delete_stop(train)
     erb(:deleted)
   elsif
     params.fetch("hidden_id_train") != ""

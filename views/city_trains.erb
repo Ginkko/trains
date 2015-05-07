@@ -1,5 +1,4 @@
 <h1><%= @city.name %> Details</h1>
-
 <h4>List of trains:</h4>
 <ul>
   <% @trains.each do |train, time| %>
@@ -34,8 +33,14 @@
   <h5>Delete This City:</h5>
   <form action="/deleted" method="post">
     <div class="form-group">
+
+    <!-- to keep all deletions on the same path we had to declare a bunch of hidden values for
+    each delete command. in retrospect, multiple paths may be the better option  -->
+
       <input type="hidden" name="hidden_id_city" value="<%= @city.id %>">
       <input type="hidden" name="hidden_id_train" value="<%= nil %>">
+      <input type="hidden" name="train_to_delete" value="<%= nil%>">
+      <input type="hidden" name="city_to_delete" value="<%= nil%>">
       <input type="hidden" name="_method" value="delete">
       <button class="btn btn-danger" name="delete">Delete</button>
     </div>

@@ -11,7 +11,6 @@
 <form action="/trains/<%= @train.id %>" method="post">
   <input type ="hidden" name="_method" value="patch">
   <div class="form-group">
-    <!-- <label for="cities">Select City:</label> -->
     <select id="cities" name="cities">
     <% @all_cities.each do |city| %>
       <option value="<%= city.id %>"> <%= city.name %></option>
@@ -27,7 +26,6 @@
   <form action="/trains/<%= @train.id%>/updated" method="post">
     <input type="hidden" name="_method" value="patch">
     <div class "form-group">
-      <!-- <label for="new_name"> Update Train Name: </label> -->
       <input type="text" name="new_name">
       <button class= "btn btn-info" name="update">Update</button>
     </div>
@@ -40,11 +38,27 @@
     <div class="form-group">
       <input type="hidden" name="hidden_id_train" value="<%= @train.id %>">
       <input type="hidden" name="hidden_id_city" value="<%= nil %>">
-
+      <input type="hidden" name="train_to_delete" value="<%= nil%>">
+      <input type="hidden" name="city_to_delete" value="<%= nil%>">
       <input type="hidden" name="_method" value="delete">
-      <!-- <label for="delete">Delete This Train:</label> -->
       <button class="btn btn-danger" name="delete">Delete</button>
-
+    </div>
+  </form>
+</div>
+<div class="col-md-4">
+<h5>Delete A City From This Train:</h5>
+  <form action="/deleted" method="post">
+    <div class="form-group">
+      <select id="city_to_delete" name="city_to_delete">
+        <% @cities.each do |city, time| %>
+        <option value="<%= city.id %>"> <%= city.name %> </option>
+        <% end %>
+      </select>
+      <input type="hidden" name="_method" value="delete">
+      <input type="hidden" name="hidden_id_city" value="<%= nil %>">
+      <input type="hidden" name="hidden_id_train" value="<%= @train.id %>">
+      <input type="hidden" name="train_to_delete" value="<%= nil %>">
+      <button class ="btn btn-danger" name="submit">Delete</button>
     </div>
   </form>
 </div>
