@@ -53,6 +53,10 @@ class Train
     DB.exec("DELETE FROM stops WHERE train_id = #{self.id};")
   end
 
+  def delete_stop(city)
+    DB.exec("DELETE FROM stops WHERE train_id = #{self.id} and city_id = #{city.id};")
+  end
+
   def cities
     train_cities = []
     results = DB.exec("SELECT city_id, time FROM stops WHERE train_id = #{self.id};")
