@@ -65,4 +65,9 @@ class Train
     end
     train_cities
   end
+
+  def cost
+    cost = rand(1..10)
+    "$#{cost}.00"
+  end
 end

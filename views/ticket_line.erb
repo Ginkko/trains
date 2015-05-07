@@ -1,0 +1,15 @@
+<h1>Buy a Ticket!</h1>
+<p>Choose your line<p>
+
+<form action="/ticket_success" method="get">
+  <div class="form-group">
+    <input type="hidden" name="hidden_id_city" value="<%= @city.id %>">
+    <label for="train">Select Train Line:</label>
+    <select id="train" name="train">
+      <% @trains.each do |train| %>
+        <option value="<%= train.first.id %>"> <%= train.first.name %> <%= train.first.cost %> </option>
+        <% end %>
+    </select>
+  </div>
+  <button class = "btn btn-success" name="submit">Select</button>
+</form>

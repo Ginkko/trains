@@ -1,0 +1,14 @@
+<h1>Buy a Ticket!</h1>
+
+<p>Where would you like to go?</p>
+<form action="/process" method="post">
+  <div class="form-group">
+    <label for="cities">Select city:</label>
+    <select id="cities" name="cities">
+      <% @all_cities.each do |city| %>
+        <option value="<%= city.id %>"> <%= city.name %> </option>
+        <% end %>
+    </select>
+  </div>
+  <button class = "btn btn-success" name="submit">Select</button>
+</form>

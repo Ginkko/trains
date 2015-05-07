@@ -12,6 +12,33 @@ get('/') do
   erb(:index)
 end
 
+get('/ticket') do
+  @all_cities = City.all
+  erb(:ticket)
+end
+
+post('/process') do
+  city = City.find(params.fetch('cities'))
+  redirect("/ticket/#{city.id}")
+end
+
+get('/ticket/:id') do
+  @city = City.find(params.fetch('id'))
+  @trains = @city.trains
+  erb(:ticket_line)
+end
+
+get('/ticket_success') do
+  @city = City.find(params.fetch('hidden_id_city'))
+  @train = Train.find(params.fetch('train'))
+  @result = DB.exec("SELECT time FROM stops WHERE city_id = #{@city.id} AND train_id = #{@train.id};")
+  @time = ""
+  @result.each do |result|
+    @time = result.fetch('time').to_s
+  end
+  erb(:ticket_success)
+end
+
 get('/trains') do
   @trains = Train.all
   erb(:trains)
