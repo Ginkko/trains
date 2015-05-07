@@ -35,7 +35,7 @@ describe(Train) do
       seattle = City.new({:id => nil, :name => "Seattle"})
       seattle.save
       test_train.update({:city_ids => [portland.id, seattle.id]})
-      expect(test_train.cities).to eq([portland, seattle])
+      expect(test_train.cities[1]).to include(seattle)
     end
   end
 
@@ -48,7 +48,7 @@ describe(Train) do
       seattle = City.new({:id => nil, :name => "Seattle"})
       seattle.save
       train.update({:city_ids => [portland.id, seattle.id]})
-      expect(train.cities).to eq([portland, seattle])
+      expect(train.cities[1]).to include(seattle)
     end
   end
 

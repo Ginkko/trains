@@ -42,7 +42,7 @@
       <input type="hidden" name="train_to_delete" value="<%= nil%>">
       <input type="hidden" name="city_to_delete" value="<%= nil%>">
       <input type="hidden" name="_method" value="delete">
-      <button class="btn btn-danger" name="delete">Delete</button>
+      <button class="btn btn-danger" name="delete" id="delete_city">Delete</button>
     </div>
   </form>
 </div>
@@ -58,7 +58,7 @@
       <input type="hidden" name="_method" value="delete">
       <input type="hidden" name="hidden_id_city" value="<%= @city.id %>">
       <input type="hidden" name="hidden_id_train" value="<%= nil  %>">
-      <button class ="btn btn-danger" name="submit">Delete</button>
+      <button class ="btn btn-danger" name="submit" id ="Delete_train">Delete</button>
     </div>
   </form>
 </div>

@@ -1,7 +1,6 @@
 require('capybara/rspec')
 require('./app')
 require "spec_helper"
-
 Capybara.app = Sinatra::Application
 set(:show_exceptions, false)
 
@@ -57,7 +56,7 @@ describe('updating and deleting cities', {:type => :feature}) do
     click_on('Save')
     expect(page).to have_content("Metropolis")
     click_on('Metropolis')
-    click_on('Delete')
+    click_button('delete_city')
     expect(page).to have_content("deleted")
   end
 end

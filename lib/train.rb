@@ -33,19 +33,17 @@ class Train
   end
 
   def generate_time
-    rand_int = rand(1..12)
+    rand_int = rand(1..24)
     "#{rand_int}:00"
   end
 
   def update(attributes)
     @name = attributes.fetch(:name, @name)
     DB.exec("UPDATE trains SET name = '#{@name}' WHERE id = #{self.id};")
-
     attributes.fetch(:city_ids, []).each do |city_id|
-    time = self.generate_time
-    DB.exec("INSERT INTO stops (city_id, train_id, time) VALUES (#{city_id}, #{self.id}, '#{time}');")
+      time = self.generate_time
+      DB.exec("INSERT INTO stops (city_id, train_id, time) VALUES (#{city_id}, #{self.id}, '#{time}');")
     end
-
   end
 
   def delete
