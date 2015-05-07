@@ -32,12 +32,18 @@ class Train
     same_name = @name == other_train.name
   end
 
+  def generate_time
+    rand_int = rand(1..12)
+    "#{rand_int}:00"
+  end
+
   def update(attributes)
     @name = attributes.fetch(:name, @name)
     DB.exec("UPDATE trains SET name = '#{@name}' WHERE id = #{self.id};")
 
     attributes.fetch(:city_ids, []).each do |city_id|
-      DB.exec("INSERT INTO stops (city_id, train_id) VALUES (#{city_id}, #{self.id});")
+    time = self.generate_time
+    DB.exec("INSERT INTO stops (city_id, train_id, time) VALUES (#{city_id}, #{self.id}, '#{time}');")
     end
 
   end
@@ -49,12 +55,13 @@ class Train
 
   def cities
     train_cities = []
-    results = DB.exec("SELECT city_id FROM stops WHERE train_id = #{self.id};")
+    results = DB.exec("SELECT city_id, time FROM stops WHERE train_id = #{self.id};")
     results.each do |result|
       city_id = result.fetch("city_id").to_i
       city = DB.exec("SELECT * FROM cities WHERE id = #{city_id};")
+      time = result.fetch('time').to_s
       name = city.first.fetch("name")
-      train_cities.push(City.new({:id => city_id, :name => name}))
+      train_cities.push([City.new({:id => city_id, :name => name}), time])
     end
     train_cities
   end

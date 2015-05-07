@@ -2,8 +2,8 @@
 
 <h4>List of trains:</h4>
 <ul>
-  <% @trains.each do |train| %>
-    <li><a href="/trains/<%= train.id %>"><%= train.name %></a></li>
+  <% @trains.each do |train, time| %>
+    <li><a href="/trains/<%= train.id %>"><%= train.name %></a> <%= time%></li>
   <% end %>
 </ul>
 <div class="col-md-4">
